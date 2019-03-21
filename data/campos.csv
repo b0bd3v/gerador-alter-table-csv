@@ -1,0 +1,32 @@
+nome,grupo,o,tipo,ocomin,ocomax,tammin,tammax,descricao,obs,tabela
+xNome,retirada,,C,0,1,2,60,Razão Social ou Nome do Expedidor,,NFE_RETIRADA
+CEP,retirada,,N,0,1,8,8,Código do CEP,Informar os zeros não significativos.,NFE_RETIRADA
+cPais,retirada,,N,0,1,4,4,Código do País,"Utilizar a Tabela do BACEN (Anexo IX - Tabela de UF, Município e País).",NFE_RETIRADA
+xPais,retirada,,C,0,1,2,60,Nome do País,,NFE_RETIRADA
+fone,retirada,,N,0,1,6,14,Telefone,Preencher com o Código DDD + número do telefone. Nas operações com exterior é permitido informar o código do país + código da localidade + número do telefone (v2.0),NFE_RETIRADA
+email,retirada,,C,0,1,1,60,Endereço de e-mail do Expedidor,,NFE_RETIRADA
+IE,retirada,,N,0,1,2,14,Inscrição Estadual do Estabelecimento Expedidor,"Informar somente os algarismos, sem os caracteres de formatação (ponto, barra, hífen, etc.).",NFE_RETIRADA
+xNome,entrega,,C,0,1,2,60,Razão Social ou Nome do Expedidor,,NFE_ENTREGA
+CEP,entrega,,N,0,1,8,8,Código do CEP,Informar os zeros não significativos.,NFE_ENTREGA
+cPais,entrega,,N,0,1,4,4,Código do País,"Utilizar a Tabela do BACEN (Anexo IX - Tabela de UF, Município e País).",NFE_ENTREGA
+xPais,entrega,,C,0,1,2,60,Nome do País,,NFE_ENTREGA
+fone,entrega,,N,0,1,6,14,Telefone,Preencher com o Código DDD + número do telefone. Nas operações com exterior é permitido informar o código do país + código da localidade + número do telefone (v2.0),NFE_ENTREGA
+email,entrega,,C,0,1,1,60,Endereço de e-mail do Expedidor,,NFE_ENTREGA
+IE,entrega,,N,0,1,2,14,Inscrição Estadual do Estabelecimento Expedidor,"Informar somente os algarismos, sem os caracteres de formatação (ponto, barra, hífen, etc.).",NFE_ENTREGA
+xMotivoIsencao,med,,C,0,1,1,255,Motivo da isenção da ANVISA,"Obs.: Para medicamento isento de registro na ANVISA, informar o
+número da decisão que o isenta, como por exemplo o número da Resolução da Diretoria Colegiada da ANVISA (RDC).
+",NFE_MED
+vICMSSubstituto,ICMS60,,N,0,1,13:2,13:2,Valor do ICMS Próprio do Substituto cobrado em operação anterior,Valor do ICMS Próprio do Substituto cobrado em operação anterior,NFE_ICMS
+pST,ICMSST,,N,0,1,3:2,4:2,Alíquota suportada pelo Consumidor Final,"Deve ser informada a alíquota do cálculo do ICMS-ST, já incluso o FCP caso incida sobre a mercadoria. Exemplo: alíquota da mercadoria na venda ao consumidor final = 18% e 2% de FCP. A alíquota a ser informada no campo pST deve ser 20%.",NFE_ICMS
+vICMSSubstituto,ICMSST,,N,0,1,13:2,13:2,Valor do ICMS próprio do Substituto,Valor do ICMS Próprio do Substituto cobrado em operação anterior,NFE_ICMS
+vBCFCPSTRet,ICMSST,N27.1,N,1,1,13:2,13:2,Valor da Base de Cálculo do FCP retido anteriormente,Informar o valor da Base de Cálculo do FCP retido anteriormente por ST,NFE_ICMS
+pFCPSTRet,ICMSST,N27.1,N,1,1,3:2,4:2,Percentual do FCP retido anteriormente por Substituição Tributária,Percentual relativo ao Fundo de Combate à Pobreza (FCP) retido por substituição tributária.,NFE_ICMS
+vFCPSTRet,ICMSST,N27.1,N,1,1,13:2,13:2,Valor do FCP retido por Substituição Tributária,Valor do ICMS relativo ao Fundo de Combate à Pobreza (FCP) retido por substituição tributária,NFE_ICMS
+pRedBCEfet,ICMSST,N33,N,1,1,3:2,4:2,Percentual de redução da base de cálculo efetiva,"Percentual de redução, caso estivesse submetida ao regime comum de tributação, para obtenção da base de cálculo efetiva (vBCEfet). Obs.: opcional a critério da UF.",NFE_ICMS
+vBCEfet,ICMSST,N33,N,1,1,13:2,13:2,Valor da base de cálculo efetiva,"Valor da base de cálculo que seria atribuída à operação própria do contribuinte substituído, caso estivesse submetida ao regime comum de tributação, obtida pelo produto do Vprod por (1- pRedBCEfet). Obs.: opcional a critério da UF.",NFE_ICMS
+pICMSEfet,ICMSST,N33,N,1,1,3:2,4:2,Alíquota do ICMS efetiva,"Alíquota do ICMS na operação a consumidor final, caso estivesse submetida ao regime comum de tributação. Obs.: opcional a critério da UF",NFE_ICMS
+vICMSEfet,ICMSST,N33,N,1,1,13:2,13:2,Valor do ICMS efetivo,"Obtido pelo produto do valor do campo pICMSEfet pelo valor do campo vBCEfet, caso estivesse submetida ao regime comum de tributação. Obs.: opcional a critério da UF.",NFE_ICMS
+vICMSSubstituto,ICMSSN500,,N,0,1,13:2,13:2,Valor do ICMS próprio do Substituto,Valor do ICMS próprio do Substituto cobrado em operação anterior,NFE_ICMS
+cMsg,protNFe,PR13,N,0,1,1,4,Código da Mensagem.,,NFE_PROTNFE
+xMsg,protNFe,PR13,C,1,1,1,200,Mensagem da SEFAZ para o emissor,,NFE_PROTNFE
+Signature,protNFe,,xml,0,1,,4000,Assinatura XML do grupo identificado pelo atributo “Id” A decisão de assinar a mensagem fica a critério da UF interessada.,,NFE_PROTNFE
