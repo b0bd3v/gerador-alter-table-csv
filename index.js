@@ -1,7 +1,6 @@
 var csv = require('fast-csv');
 var command = '';
 process.argv.forEach(function (val, index, array) {
-    // console.log(index + ': ' + val);
     switch (val) {
         case "create":
             command = 'create';
@@ -16,7 +15,9 @@ process.argv.forEach(function (val, index, array) {
 });
 var retorno = '';
 if (command == 'create') {
-    var csvStream = csv.fromPath("data/campos.csv", { headers: true, objectMode: true })
+    // const csvPath = "data/campos.csv"
+    var csvPath = "data/campos_bab.csv";
+    var csvStream = csv.fromPath(csvPath, { headers: true, objectMode: true })
         .on("data", function (data) {
         var stringTipo = '';
         var tamanhoMax = data.tammax.split(':');

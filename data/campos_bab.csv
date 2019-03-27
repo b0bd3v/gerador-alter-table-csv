@@ -1,0 +1,19 @@
+nome,grupo,o,tipo,ocomin,ocomax,tammin,tammax,descricao,obs,tabela
+xNome,retirada,,C,0,1,2,60,Razão Social ou Nome do Expedidor,,BAB_RETIRADA
+CEP,retirada,,C,0,1,8,14,Código do CEP,Informar os zeros não significativos.,BAB_RETIRADA
+cPais,retirada,,N,0,1,4,4,Código do País,"Utilizar a Tabela do BACEN (Anexo IX - Tabela de UF, Município e País).",BAB_RETIRADA
+xPais,retirada,,C,0,1,2,60,Nome do País,,BAB_RETIRADA
+fone,retirada,,C,0,1,6,20,Telefone,Preencher com o Código DDD + número do telefone. Nas operações com exterior é permitido informar o código do país + código da localidade + número do telefone (v2.0),BAB_RETIRADA
+email,retirada,,C,0,1,1,60,Endereço de e-mail do Expedidor,,BAB_RETIRADA
+IE,retirada,,C,0,1,2,18,Inscrição Estadual do Estabelecimento Expedidor,"Informar somente os algarismos, sem os caracteres de formatação (ponto, barra, hífen, etc.).",BAB_RETIRADA
+xNome,entrega,,C,0,1,2,60,Razão Social ou Nome do Expedidor,,BAB_ENTREGA
+CEP,entrega,,C,0,1,8,14,Código do CEP,Informar os zeros não significativos.,BAB_ENTREGA
+cPais,entrega,,N,0,1,4,4,Código do País,"Utilizar a Tabela do BACEN (Anexo IX - Tabela de UF, Município e País).",BAB_ENTREGA
+xPais,entrega,,C,0,1,2,60,Nome do País,,BAB_ENTREGA
+fone,entrega,,C,0,1,6,20,Telefone,Preencher com o Código DDD + número do telefone. Nas operações com exterior é permitido informar o código do país + código da localidade + número do telefone (v2.0),BAB_ENTREGA
+email,entrega,,C,0,1,1,60,Endereço de e-mail do Expedidor,,BAB_ENTREGA
+IE,entrega,,C,0,1,2,18,Inscrição Estadual do Estabelecimento Expedidor,"Informar somente os algarismos, sem os caracteres de formatação (ponto, barra, hífen, etc.).",BAB_ENTREGA
+xMotivoIsencao,med,,C,0,1,1,255,Motivo da isenção da ANVISA,"Obs.: Para medicamento isento de registro na ANVISA, informar o
+número da decisão que o isenta, como por exemplo o número da Resolução da Diretoria Colegiada da ANVISA (RDC).
+",BAB_MED
+vICMSSubstituto,ICMS60,,N,0,1,13:2,13:2,Valor do ICMS Próprio do Substituto cobrado em operação anterior,Valor do ICMS Próprio do Substituto cobrado em operação anterior,BAB_ICMS

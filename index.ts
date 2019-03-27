@@ -2,7 +2,6 @@ var csv = require('fast-csv');
 
 let command = ''
 process.argv.forEach(function(val, index, array) {
-	// console.log(index + ': ' + val);
 	switch (val) {
 		case "create":
 			command = 'create'
@@ -22,9 +21,11 @@ process.argv.forEach(function(val, index, array) {
 let retorno = ''
 
 if (command == 'create') {
-	var csvStream = csv.fromPath("data/campos.csv", { headers: true, objectMode: true })
-		.on("data", function(data: any) {
+	// const csvPath = "data/campos.csv"
+	const csvPath = "data/campos_bab.csv"
 
+	var csvStream = csv.fromPath(csvPath, { headers: true, objectMode: true })
+		.on("data", function(data: any) {
 			let stringTipo = ''
 			let tamanhoMax = data.tammax.split(':')
 
