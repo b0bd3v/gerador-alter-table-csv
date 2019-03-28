@@ -1,6 +1,25 @@
 var csv = require('fast-csv');
-var command = '';
+var fs = require('fs');
+var isFilePathCSV = function (filePath) {
+    var regexp = /\.csv$/;
+    return regexp.test(filePath);
+};
+var csvPath = "data/campos.csv";
+var command = 'create';
 process.argv.forEach(function (val, index, array) {
+    if (val.split('=')[1] !== undefined) {
+        val = val.split('=')[1];
+    }
+    if (isFilePathCSV(val)) {
+        try {
+            var stats = fs.statSync(val);
+            csvPath = val;
+        }
+        catch (err) {
+            console.log("Arquivo " + val + " n\u00E3o existe.");
+            process.exit();
+        }
+    }
     switch (val) {
         case "create":
             command = 'create';
@@ -8,16 +27,11 @@ process.argv.forEach(function (val, index, array) {
         case "drop":
             command = 'drop';
             break;
-        default:
-            command = 'create';
-            break;
     }
 });
 var retorno = '';
 if (command == 'create') {
-    // const csvPath = "data/campos.csv"
-    var csvPath = "data/campos_bab.csv";
-    var csvStream = csv.fromPath(csvPath, { headers: true, objectMode: true })
+    var csvStream_1 = csv.fromPath(csvPath, { headers: true, objectMode: true })
         .on("data", function (data) {
         var stringTipo = '';
         var tamanhoMax = data.tammax.split(':');
@@ -47,7 +61,7 @@ if (command == 'create') {
     });
 }
 else if (command = 'drop') {
-    var csvStream = csv.fromPath("data/campos.csv", { headers: true, objectMode: true })
+    var csvStream = csv.fromPath(csvPath, { headers: true, objectMode: true })
         .on("data", function (data) {
         var stringTipo = '';
         switch (data.tipo) {

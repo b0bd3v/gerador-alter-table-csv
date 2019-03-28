@@ -1,31 +1,49 @@
-var csv = require('fast-csv');
+const csv = require('fast-csv')
+const fs = require('fs')
 
-let command = ''
+const isFilePathCSV = (filePath: string): boolean => {
+	const regexp = /\.csv$/
+	return regexp.test(filePath)
+}
+
+let csvPath = "data/campos.csv"
+let command = 'create'
+
 process.argv.forEach(function(val, index, array) {
+	
+	if( val.split('=')[1]  !== undefined ){
+		val = val.split('=')[1]
+	}
+	
+	if(isFilePathCSV(val)){
+		try {
+			var stats = fs.statSync(val)
+			csvPath = val
+		}
+		catch(err) {
+			console.log(`Arquivo ${val} não existe.`)
+			process.exit()
+		}
+	}
+	
 	switch (val) {
 		case "create":
 			command = 'create'
-			break;
-
+			break
 		case "drop":
 			command = 'drop'
-			break;
-
-		default:
-			command = 'create'
-			break;
+			break
 	}
 
 });
 
+
 let retorno = ''
-
 if (command == 'create') {
-	// const csvPath = "data/campos.csv"
-	const csvPath = "data/campos_bab.csv"
-
-	var csvStream = csv.fromPath(csvPath, { headers: true, objectMode: true })
+	
+	let csvStream = csv.fromPath(csvPath, { headers: true, objectMode: true })
 		.on("data", function(data: any) {
+
 			let stringTipo = ''
 			let tamanhoMax = data.tammax.split(':')
 
@@ -56,7 +74,7 @@ if (command == 'create') {
 		});
 
 } else if(command = 'drop'){
-	var csvStream = csv.fromPath("data/campos.csv", { headers: true, objectMode: true })
+	var csvStream = csv.fromPath(csvPath, { headers: true, objectMode: true })
 	.on("data", function(data: any) {
 
 		let stringTipo = ''
@@ -84,27 +102,3 @@ if (command == 'create') {
 		console.log(retorno);
 	});
 }
-
-
-
-
-// stream.pipe(csvStream);
-
-
-// csv.from.path('../THEPATHINYOURPROJECT/TOTHE/csv_FILE_YOU_WANT_TO_LOAD.csv').to.array(function (data: any) {
-//     for (var index = 0; index < data.length; index++) {
-
-//     }
-// });
-// //Reads the CSV file from the path you specify, and the data is stored in the array we specified using callback function.  This function iterates through an array and each line from the CSV file will be pushed as a record to another array called MyData , and logs the data into the console to ensure it worked.
-// ​
-// var http = require('http');
-// //Load the http module.
-// ​
-// var server = http.createServer(function (req: any, resp: any) {
-//     resp.writeHead(200, { 'content-type': 'application/json' });
-//     // resp.end(JSON.stringify(MyData));
-// });
-// // Create a webserver with a request listener callback.  This will write the response header with the content type as json, and end the response by sending the MyData array in JSON format.
-// ​
-// server.listen(8181);
