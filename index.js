@@ -1,4 +1,3 @@
-"use strict";
 var csv = require('fast-csv');
 var command = '';
 process.argv.forEach(function (val, index, array) {
@@ -71,20 +70,3 @@ else if (command = 'drop') {
         console.log(retorno);
     });
 }
-// stream.pipe(csvStream);
-// csv.from.path('../THEPATHINYOURPROJECT/TOTHE/csv_FILE_YOU_WANT_TO_LOAD.csv').to.array(function (data: any) {
-//     for (var index = 0; index < data.length; index++) {
-//     }
-// });
-// //Reads the CSV file from the path you specify, and the data is stored in the array we specified using callback function.  This function iterates through an array and each line from the CSV file will be pushed as a record to another array called MyData , and logs the data into the console to ensure it worked.
-// ​
-// var http = require('http');
-// //Load the http module.
-// ​
-// var server = http.createServer(function (req: any, resp: any) {
-//     resp.writeHead(200, { 'content-type': 'application/json' });
-//     // resp.end(JSON.stringify(MyData));
-// });
-// // Create a webserver with a request listener callback.  This will write the response header with the content type as json, and end the response by sending the MyData array in JSON format.
-// ​
-// server.listen(8181);
