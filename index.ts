@@ -1,10 +1,6 @@
 const csv = require('fast-csv')
 const fs = require('fs')
-
-const isFilePathCSV = (filePath: string): boolean => {
-	const regexp = /\.csv$/
-	return regexp.test(filePath)
-}
+const fileHelper = require('./FileHelper')
 
 let csvPath = "data/campos.csv"
 let command = 'create'
@@ -15,7 +11,7 @@ process.argv.forEach(function(val, index, array) {
 		val = val.split('=')[1]
 	}
 	
-	if(isFilePathCSV(val)){
+	if(fileHelper.isFilePathCSV(val)){
 		try {
 			var stats = fs.statSync(val)
 			csvPath = val

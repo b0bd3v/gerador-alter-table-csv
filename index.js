@@ -1,16 +1,14 @@
+"use strict";
 var csv = require('fast-csv');
 var fs = require('fs');
-var isFilePathCSV = function (filePath) {
-    var regexp = /\.csv$/;
-    return regexp.test(filePath);
-};
+var fileHelper = require('./FileHelper');
 var csvPath = "data/campos.csv";
 var command = 'create';
 process.argv.forEach(function (val, index, array) {
     if (val.split('=')[1] !== undefined) {
         val = val.split('=')[1];
     }
-    if (isFilePathCSV(val)) {
+    if (fileHelper.isFilePathCSV(val)) {
         try {
             var stats = fs.statSync(val);
             csvPath = val;
